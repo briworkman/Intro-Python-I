@@ -31,5 +31,28 @@ import sys
 import calendar
 from datetime import datetime
 
-date = input("Enter [month][year]: ")
-print(date)
+# Read our arguments
+args = sys.argv
+# If no args are supplied...
+# Print a text calendar for current month and year
+if len(args) == 1:
+    month = datetime.today().month
+    year = datetime.today().year
+    calendar.prmonth(year, month)
+# If 1 arg is supplied...
+elif len(args) == 2:
+    month = int(args[1])
+    year = datetime.today().year
+    calendar.prmonth(year, month)
+# Check if it's an int 1-12, print out calendar for that month, current year
+# If 2 args are supplied...
+# Check if 1 is int 1-12, check if 2 in an int
+# Print our calendar for that month and year
+elif len(args) == 3:
+    month = int(args[1])
+    year = int(args[2])
+    calendar.prmonth(year, month)
+
+# Otherwise, print an error with usage hint
+else:
+    print("ERROR: Command must be in the form `14_cal.py [month] [year]`")
